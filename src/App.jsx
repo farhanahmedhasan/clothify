@@ -25,7 +25,7 @@ function App() {
     {
       id: 5,
       title: 'Mens',
-      imageUrl: 'https://i.ibb.co/GCCdy8t/mens.png',
+      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
     },
   ];
 
