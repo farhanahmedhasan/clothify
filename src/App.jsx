@@ -28,6 +28,7 @@ function App() {
       imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
     },
   ];
+
   return (
     <div>
       <CategoryMenu categories={categories} />
