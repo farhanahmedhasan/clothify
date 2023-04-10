@@ -1,15 +1,7 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
+import MainNavigation from './pages/navigation/MainNavigation';
 import HomePage from './pages/home/HomePage';
-
-function MainNavigation() {
-  return (
-    <nav>
-      <div>I am the Navigation Bar</div>
-      <Outlet />
-    </nav>
-  );
-}
 
 function App() {
   return (
