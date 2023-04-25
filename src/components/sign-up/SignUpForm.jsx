@@ -3,6 +3,7 @@ import { createAuthUserFromEmailAndPassword, createUserDocFromAuth } from '../..
 import Input from '../form/Input';
 
 import './sign-up-form.styles.scss';
+import Button from '../button/Button';
 
 const defaultFormfield = {
   displayName: '',
@@ -69,7 +70,7 @@ export default function SignUpForm() {
           required
         />
 
-        <button type='submit'>Sign Up</button>
+        <Button type='submit'>Sign Up</Button>
       </form>
     </div>
   );
