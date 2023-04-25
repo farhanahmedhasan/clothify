@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { createAuthUserFromEmailAndPassword, createUserDocFromAuth } from '../../utils/firebase/firebase';
 import Input from '../form/Input';
 
+import './sign-up-form.styles.scss';
+
 const defaultFormfield = {
   displayName: '',
   email: '',
@@ -40,8 +42,9 @@ export default function SignUpForm() {
   }
 
   return (
-    <div>
-      <h1>Sign up with your email and password</h1>
+    <div className='signupContainer'>
+      <h2>Don't have an accounr ?</h2>
+      <span>Sign up with your email and password</span>
 
       <form className='form' onSubmit={handleSubmit}>
         <Input
