@@ -16,7 +16,7 @@ export default function MainNavigation() {
             Shop
           </Link>
 
-          <Link className='nav__link' to='/signin'>
+          <Link className='nav__link' to='/auth'>
             Sign In
           </Link>
         </ul>
