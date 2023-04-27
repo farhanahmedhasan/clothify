@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { signInWithGooglePopup, createUserDocFromAuth } from '../../utils/firebase/firebase';
+import {
+  signInWithGooglePopup,
+  createUserDocFromAuth,
+  signinAuthUserFromEmailAndPassword,
+} from '../../utils/firebase/firebase';
 
 import Input from '../../components/form/Input';
 import Button from '../button/Button';
@@ -15,6 +19,10 @@ export default function SignIn() {
   const [formField, setFormField] = useState(defaultFormfield);
   const { email, password } = formField;
 
+  function resetForm() {
+    setFormField(defaultFormfield);
+  }
+
   const signInGoogle = async (signInMethod) => {
     const { user } = await signInMethod();
     const userDocRef = await createUserDocFromAuth(user);
@@ -25,8 +33,18 @@ export default function SignIn() {
     setFormField({ ...formField, [name]: value });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+
+    try {
+      const { user } = await signinAuthUserFromEmailAndPassword(email, password);
+      console.log(user);
+      resetForm(defaultFormfield);
+    } catch (error) {
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+        alert('Wrong credentials');
+      }
+    }
   }
 
   return (
@@ -38,7 +56,7 @@ export default function SignIn() {
         <Input type='password' label='Password' name='password' value={password} onChange={handleChange} required />
         <div className='buttonWrapper'>
           <Button type='submit'>Sign In</Button>
-          <Button buttonType='google' onClick={() => signInGoogle(signInWithGooglePopup)}>
+          <Button type='button' buttonType='google' onClick={() => signInGoogle(signInWithGooglePopup)}>
             Google sign in
           </Button>
         </div>
